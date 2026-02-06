@@ -1,0 +1,33 @@
+
+@inherits Minikanban.Components.Shared.StateAwareComponent
+
+<div class="add-card">
+    <input @bind="title" placeholder="Titel" />
+    <textarea @bind="description" placeholder="Beskrivning"></textarea>
+
+    <button @onclick="AddCardAsync">Lägg till</button>
+</div>
+
+@code {
+    [Parameter] public string ColumnName { get; set; } = string.Empty;
+
+    private string title = string.Empty;
+    private string description = string.Empty;
+
+    private async Task AddCardAsync()
+    {
+        // 1) Bygg modell
+        var card = new Minikanban.Models.KanbanCard
+        {
+            Title = title,
+            Description = description
+        };
+
+        // 2) Uppdatera state (triggar notify)
+        await State.AddCardAsync(ColumnName, card);
+
+        // 3) Nollställ UI-fält
+        title = string.Empty;
+        description = string.Empty;
+    }
+}

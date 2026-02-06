@@ -1,0 +1,28 @@
+
+@inherits Minikanban.Components.Shared.StateAwareComponent
+
+<div class="card">
+    <strong>@Card.Title</strong>
+    <p>@Card.Description</p>
+
+    <div class="move-buttons">
+        @foreach (var target in State.Columns.Select(c => c.Name).Where(n => n != ColumnName))
+        {
+            <button @onclick="() => MoveToAsync(target)">Flytta till @target</button>
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public Minikanban.Models.KanbanCard Card { get; set; } = default!;
+    [Parameter] public string ColumnName { get; set; } = default!;
+
+    private Task MoveToAsync(string to)
+        => State.MoveCardAsync(ColumnName, to, Card.Id);
+
+    protected override Task StateChanged()
+    {
+        // Exempel: här skulle man kunna visa att just detta kort uppdaterades
+        return Task.CompletedTask;
+    }
+}
