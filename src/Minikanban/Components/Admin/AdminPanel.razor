@@ -1,0 +1,16 @@
+
+@using Minikanban.Services
+@using Microsoft.AspNetCore.Components
+
+<RoleGate Roles="@(new[] { "Admin" })">
+    <section class="admin-panel">
+        <h3>Administration</h3>
+        <p>Antal kolumner: @State.Columns.Count</p>
+        <p>Antal kort: @State.Columns.Sum(c => c.Cards.Count)</p>
+        <!-- Workshop B: Lägg till åtgärder här (t.ex. rensa kolumn) -->
+    </section>
+</RoleGate>
+
+@code {
+    [CascadingParameter] public KanbanState State { get; set; } = default!;
+}

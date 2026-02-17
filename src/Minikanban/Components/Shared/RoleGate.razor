@@ -1,0 +1,34 @@
+
+@using Minikanban.Services
+@implements IDisposable
+
+@if (IsAllowed)
+{
+    @ChildContent
+}
+
+@code {
+    [CascadingParameter] public UserState UserState { get; set; } = default!;
+    [Parameter] public IEnumerable<string> Roles { get; set; } = Array.Empty<string>();
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    private bool IsAllowed => Roles?.Contains(UserState.Role, StringComparer.OrdinalIgnoreCase) == true;
+
+    protected override void OnInitialized()
+    {
+        UserState.OnChangeAsync += HandleChangedAsync;
+    }
+
+    private async Task HandleChangedAsync()
+    {
+        await InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        if (UserState is not null)
+        {
+            UserState.OnChangeAsync -= HandleChangedAsync;
+        }
+    }
+}

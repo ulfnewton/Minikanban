@@ -6,6 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Registrera delat state som singleton
 builder.Services.AddSingleton<KanbanState>();
+// Identity-light: simulerad användare/roll i UI
+builder.Services.AddSingleton<UserState>();
 
 // Razor Components (Blazor Server)
 builder.Services.AddRazorComponents()

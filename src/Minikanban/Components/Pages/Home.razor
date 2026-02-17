@@ -1,4 +1,13 @@
 
 @page "/"
 
-<KanbanBoard />
+<div class="home-container">
+    <div class="role-selector-container">
+        <label>Välj roll:</label>
+        <RoleSelector />
+    </div>
+
+    <AdminPanel />
+
+    <KanbanBoard />
+</div>

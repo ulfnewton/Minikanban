@@ -1,9 +1,39 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.31912.275
+# Visual Studio Version 18
+VisualStudioVersion = 18.3.11429.125
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minikanban", "src/Minikanban/Minikanban.csproj", "{D9F8D6C3-4A0E-4F80-8F7D-1B3A7D9B4E7D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minikanban", "src\Minikanban\Minikanban.csproj", "{D9F8D6C3-4A0E-4F80-8F7D-1B3A7D9B4E7D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{A7605358-7789-4CB9-B88B-873760F54C4C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Blazor", "Blazor", "{4D85D265-6F8E-42A9-99F6-82F52770EE50}"
+	ProjectSection(SolutionItems) = preProject
+		docs\blazor-komponenter\01-komponent-livscykel.md = docs\blazor-komponenter\01-komponent-livscykel.md
+		docs\blazor-komponenter\02-dataflode.md = docs\blazor-komponenter\02-dataflode.md
+		docs\blazor-komponenter\99-sammanfattning.md = docs\blazor-komponenter\99-sammanfattning.md
+		docs\blazor-komponenter\README.md = docs\blazor-komponenter\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kanban", "Kanban", "{7FC6F099-8CAB-42EA-AA75-B689E87D0A8E}"
+	ProjectSection(SolutionItems) = preProject
+		docs\kanban-komponenter\01-arkitektur-oversikt.md = docs\kanban-komponenter\01-arkitektur-oversikt.md
+		docs\kanban-komponenter\02-dataflode-minikanban.md = docs\kanban-komponenter\02-dataflode-minikanban.md
+		docs\kanban-komponenter\03-stateaware-pattern.md = docs\kanban-komponenter\03-stateaware-pattern.md
+		docs\kanban-komponenter\04-best-practices.md = docs\kanban-komponenter\04-best-practices.md
+		docs\kanban-komponenter\05-felsokning.md = docs\kanban-komponenter\05-felsokning.md
+		docs\kanban-komponenter\99-sammanfattning.md = docs\kanban-komponenter\99-sammanfattning.md
+		docs\kanban-komponenter\README.md = docs\kanban-komponenter\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "identity", "identity", "{6FD39195-C6A8-42B3-B759-2AD024BC9CAA}"
+	ProjectSection(SolutionItems) = preProject
+		docs\identity\identity-light-intro.md = docs\identity\identity-light-intro.md
+		docs\identity\identity-light-teori.md = docs\identity\identity-light-teori.md
+		docs\identity\index.md = docs\identity\index.md
+		docs\identity\integration-notes.md = docs\identity\integration-notes.md
+		docs\identity\workshop-A.md = docs\identity\workshop-A.md
+		docs\identity\workshop-B.md = docs\identity\workshop-B.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,5 +45,16 @@ Global
 		{D9F8D6C3-4A0E-4F80-8F7D-1B3A7D9B4E7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9F8D6C3-4A0E-4F80-8F7D-1B3A7D9B4E7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9F8D6C3-4A0E-4F80-8F7D-1B3A7D9B4E7D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4D85D265-6F8E-42A9-99F6-82F52770EE50} = {A7605358-7789-4CB9-B88B-873760F54C4C}
+		{7FC6F099-8CAB-42EA-AA75-B689E87D0A8E} = {A7605358-7789-4CB9-B88B-873760F54C4C}
+		{6FD39195-C6A8-42B3-B759-2AD024BC9CAA} = {A7605358-7789-4CB9-B88B-873760F54C4C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {45AE03A5-A8A8-4ACD-9B41-4B7EA7327229}
 	EndGlobalSection
 EndGlobal

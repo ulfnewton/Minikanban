@@ -1,12 +1,15 @@
 
+@using Minikanban.Services
 @inherits Minikanban.Components.Shared.StateAwareComponent
 
-<div class="add-card">
-    <input @bind="title" placeholder="Titel" />
-    <textarea @bind="description" placeholder="Beskrivning"></textarea>
+<RoleGate Roles="@(new[] { "Author", "Admin" })">
+    <div class="add-card">
+        <input @bind="title" placeholder="Titel" />
+        <textarea @bind="description" placeholder="Beskrivning"></textarea>
 
-    <button @onclick="AddCardAsync">Lägg till</button>
-</div>
+        <button @onclick="AddCardAsync">Lägg till</button>
+    </div>
+</RoleGate>
 
 @code {
     [Parameter] public string ColumnName { get; set; } = string.Empty;
@@ -16,6 +19,9 @@
 
     private async Task AddCardAsync()
     {
+        if (string.IsNullOrWhiteSpace(title))
+            return;
+
         // 1) Bygg modell
         var card = new Minikanban.Models.KanbanCard
         {
