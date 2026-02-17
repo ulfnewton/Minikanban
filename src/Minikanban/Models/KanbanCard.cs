@@ -1,4 +1,3 @@
-
 namespace Minikanban.Models;
 
 public class KanbanCard

@@ -1,0 +1,38 @@
+
+@using Minikanban.Models
+@using Minikanban.Services
+@using Microsoft.AspNetCore.Components
+
+<RoleGate Roles="@(new[] { "Author", "Admin" })">
+    <div class="add-card">
+        <h4>Lägg till kort</h4>
+        <input @bind="Title" placeholder="Titel" />
+        <textarea @bind="Description" placeholder="Beskrivning"></textarea>
+        <button @onclick="Add" class="btn btn-primary">Lägg till</button>
+    </div>
+</RoleGate>
+
+@code {
+    [CascadingParameter] public KanbanState State { get; set; } = default!;
+    [CascadingParameter] public UserState UserState { get; set; } = default!;
+
+    private string Title = string.Empty;
+    private string Description = string.Empty;
+
+    private async Task Add()
+    {
+        if (string.IsNullOrWhiteSpace(Title))
+            return;
+
+        var card = new Models.KanbanCard 
+        { 
+            Title = Title,
+            Description = Description
+        };
+
+        await State.AddCardAsync("Todo", card);
+
+        Title = string.Empty;
+        Description = string.Empty;
+    }
+}

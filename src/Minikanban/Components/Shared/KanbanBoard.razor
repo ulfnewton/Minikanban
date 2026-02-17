@@ -1,18 +1,16 @@
-
-@inherits Minikanban.Components.Shared.StateAwareComponent
+@inherits StateAwareComponent
 
 <div class="board">
-    @foreach (var column in State.Columns)
+    @foreach(var column in State.Columns)
     {
         <KanbanColumn Column="column" />
     }
 </div>
 
 @code {
-    // Exponera metodnamn för undervisning
     protected override Task StateChanged()
     {
-        // Här kan man logga eller visa att Board mottog notifieringen
+        // Här kan man logga debug info, odyl.
         return Task.CompletedTask;
     }
 }

@@ -1,33 +1,30 @@
-
 using Microsoft.AspNetCore.Components;
 using Minikanban.Services;
-using System;
-using System.Threading.Tasks;
 
 namespace Minikanban.Components.Shared;
 
-public abstract class StateAwareComponent : ComponentBase, IDisposable
+public abstract partial class StateAwareComponent : ComponentBase, IDisposable
 {
     [CascadingParameter] public KanbanState State { get; set; } = default!;
 
     protected override void OnInitialized()
     {
-        State.OnChangeAsync += HandleStateChangedAsync;
+        State.OnChangeAsync += HandleStateChangesAsync;
     }
 
-    protected virtual Task StateChanged() => Task.CompletedTask;
-
-    private async Task HandleStateChangedAsync()
+    private async Task HandleStateChangesAsync()
     {
         await StateChanged();
         await InvokeAsync(StateHasChanged);
     }
 
+    protected virtual Task StateChanged() => Task.CompletedTask;
+
     public void Dispose()
     {
         if (State is not null)
         {
-            State.OnChangeAsync -= HandleStateChangedAsync;
+            State.OnChangeAsync -= HandleStateChangesAsync;
         }
     }
 }

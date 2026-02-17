@@ -1,15 +1,18 @@
-
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="/" />
-    <link rel="stylesheet" href="kanban.css" />
-    <HeadOutlet />
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="Minikanban.code-along.styles.css" />
+    <HeadOutlet @rendermode="InteractiveServer" />
 </head>
+
 <body>
-    <Routes @rendermode="RenderMode.InteractiveServer" />
+    <Routes @rendermode="InteractiveServer"/>
     <script src="_framework/blazor.web.js"></script>
 </body>
+
 </html>

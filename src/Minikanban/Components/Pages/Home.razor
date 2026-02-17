@@ -1,4 +1,21 @@
-
 @page "/"
+@using Minikanban.Components.Shared
 
-<KanbanBoard />
+<PageTitle>Home</PageTitle>
+
+<div class="home-container">
+    <div class="role-selector-container">
+        <label>Choose role:</label>
+        <RoleSelector />
+    </div>
+
+<div class="home-container">
+    <div class="role-selector-container">
+        <label>Välj roll:</label>
+        <RoleSelector />
+    </div>
+
+    <AdminPanel />
+
+    <KanbanBoard />
+</div>

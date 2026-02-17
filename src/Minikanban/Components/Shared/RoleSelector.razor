@@ -1,0 +1,16 @@
+
+@using Minikanban.Services
+@inject UserState UserState
+
+<select @onchange="OnChange" value="@UserState.Role">
+    <option value="Visitor">Visitor</option>
+    <option value="Author">Author</option>
+    <option value="Admin">Admin</option>
+</select>
+
+@code {
+    private async Task OnChange(ChangeEventArgs e)
+    {
+        await UserState.SetRoleAsync(e.Value?.ToString() ?? "Visitor");
+    }
+}
